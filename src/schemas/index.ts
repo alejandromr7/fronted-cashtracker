@@ -10,3 +10,4 @@ export const RegisterSchema = z.object({
     path: ['password_confirmation']
 })
 
+export const SuccessSchema = z.string()

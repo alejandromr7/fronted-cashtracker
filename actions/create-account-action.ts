@@ -1,8 +1,12 @@
 'use server'
+import {RegisterSchema, SuccessSchema} from "@/src/schemas"
 
-import { RegisterSchema } from "@/src/schemas"
+type ActionStateType = {
+    errors: string[],
+    success: string
+}
 
-export async function register(formData: FormData) {
+export async function register(prevState: ActionStateType, formData: FormData) {
     const registerData = {
         email: formData.get('email'),
         name: formData.get('name'),
@@ -17,7 +21,8 @@ export async function register(formData: FormData) {
         const errors = register.error.errors.map(error => error.message);
         console.log(errors);
         return {
-
+            errors,
+            success: prevState.success
         }
     }
 
@@ -35,6 +40,17 @@ export async function register(formData: FormData) {
         })
     });
 
+    if(req.status === 409){
+        return {
+            errors: ['El email ya esta en uso'],
+            success: ''
+        }
+    }
+
     const json = await req.json();
-    console.log(json)
+    const success= SuccessSchema.parse(json);
+    return {
+        errors: [],
+        success
+    }
 }
