@@ -1,13 +1,15 @@
-'use clinet'
+'use client'
+import { register } from "@/actions/create-account-action";
 
 export default function RegisterForm() {
 
-    console.log('Form');
+    console.log('Register Form');
 
     return (
         <form
             className="mt-14 space-y-5"
             noValidate
+            action={register}
         >
             <div className="flex flex-col gap-2">
                 <label
