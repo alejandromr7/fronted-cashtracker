@@ -16,3 +16,12 @@ export const RegisterSchema = z.object({
 export const SuccessSchema = z.string()
 export const ErrorResponseSchema = z.string()
 export const TokenSchema = z.string().length(6, { message: 'Token inválido' })
+
+
+export const LoginSchema = z.object({
+  email: z.string()
+    .min(1, { message: 'El Email es Obligatorio' })
+    .email({ message: 'Email no válido' }),
+  password: z.string()
+    .min(1, { message: 'El Password no puede ir vacio' })
+})
