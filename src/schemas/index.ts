@@ -15,3 +15,4 @@ export const RegisterSchema = z.object({
 
 export const SuccessSchema = z.string()
 export const ErrorResponseSchema = z.string()
+export const TokenSchema = z.string().length(6, { message: 'Token inválido' })

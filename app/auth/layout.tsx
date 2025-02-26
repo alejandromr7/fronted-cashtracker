@@ -1,4 +1,5 @@
 import Logo from '@/components/ui/Logo';
+import ToastNotification from '@/components/ui/ToastNotification';
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -22,6 +23,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           </div>
         </div>
       </div>
+
+      <ToastNotification />
     </>
   );
 };
