@@ -2,6 +2,7 @@
 
 import { ErrorResponseSchema, LoginSchema, SuccessSchema } from "@/src/schemas";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 type ActionstateType = {
   errors: string[],
@@ -53,9 +54,7 @@ export async function authenticate(prevState: ActionstateType, formdata: FormDat
     path: '/',
   })
 
-  return {
-    errors: [],
-    success
-  }
+
+  redirect('/admin');
 
 }
