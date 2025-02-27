@@ -6,8 +6,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '',
-  description: ''
+  title: 'Cashtracker - Panel de Administracion',
+  description: 'Cashtracker - Panel de Administracion'
 }
 
 export default async function AdminLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {

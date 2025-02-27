@@ -6,6 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function ToastNotification() {
   return (
-    <ToastContainer position="top-right" autoClose={2000} pauseOnFocusLoss={false} pauseOnHover={false} />
+    <ToastContainer position="top-right" autoClose={5000} pauseOnFocusLoss={false} pauseOnHover={false} />
   );
 };
