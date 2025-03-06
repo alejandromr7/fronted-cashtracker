@@ -2,6 +2,7 @@
 
 import getToken from "@/src/auth/token"
 import { DraftBudgetSchema, ErrorResponseSchema, SuccessSchema } from "@/src/schemas"
+import { revalidatePath } from "next/cache"
 import { cookies } from "next/headers"
 
 type ActionStateForm = {
@@ -48,9 +49,9 @@ export async function createBudget(prevState: ActionStateForm, formData: FormDat
     }
   }
 
+  revalidatePath('/budgets')
   const success = SuccessSchema.parse(json);
 
-  console.log(json)
 
   return {
     errors: [],

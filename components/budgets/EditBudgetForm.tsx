@@ -8,11 +8,13 @@ import BudgetForm from "./BudgetForm";
 import { Budget } from "@/src/schemas";
 import { editBudget } from "@/actions/edit-budget-action";
 
-export default function EditBudgetForm({ budget }: { budget?: Budget }) {
+export default function EditBudgetForm({ budget }: { budget: Budget }) {
 
   const router = useRouter();
 
-  const editBudgetWithId = editBudget.bind(null, budget?.id)
+  const budgetId = budget.id;
+
+  const editBudgetWithId = editBudget.bind(null, budgetId)
   const [state, dispatch] = useFormState(editBudgetWithId, {
     errors: [],
     success: ''
