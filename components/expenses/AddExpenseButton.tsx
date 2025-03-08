@@ -10,7 +10,7 @@ export default function AddExpenseButton() {
     <button
       type="button"
       className="bg-amber-500 text-white px-10 py-2 rounded-lg font-bold cursor-pointer"
-      onClick={() => router.push(location.pathname + '?AddExpense=true&showModal=true')}
+      onClick={() => router.push(location.pathname + '?addExpense=true&showModal=true')}
     >Agergar Gasto</button>
   );
 };

@@ -72,5 +72,9 @@ export const BudgetsAPIResponseSchema = z.array(BudgetAPIResponseSchema);
 
 export type Budget = z.infer<typeof BudgetAPIResponseSchema>
 
-
 export const PasswordValidationSchema = z.string().min(8, { message: 'La contraseña debe tener al menos 8 caracteres' })
+
+export const DraftExpenseSchema = z.object({
+  name: z.string().min(1, { message: 'El Nombre del gasto es obligatorio' }),
+  amount: z.coerce.number().min(1, { message: 'Cantidad no válida' })
+})
