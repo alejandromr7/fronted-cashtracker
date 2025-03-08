@@ -51,7 +51,7 @@ export default async function createExpense(budgetId: Budget['id'], prevSate: Ac
     }
   }
 
-  revalidatePath(`/budgets/${budgetId}`)
+  revalidatePath(`/admin/budgets/${budgetId}`)
   const success = SuccessSchema.parse(json);
 
   return {

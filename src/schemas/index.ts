@@ -57,6 +57,14 @@ export const DraftBudgetSchema = z.object({
     .min(1, { message: 'Cantidad no válida' }),
 })
 
+export const ExpenseAPIResponseEschema = z.object({
+  id: z.number(),
+  name: z.string(),
+  amount: z.string(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  budgetId: z.number()
+})
 
 export const BudgetAPIResponseSchema = z.object({
   id: z.number(),
@@ -64,13 +72,15 @@ export const BudgetAPIResponseSchema = z.object({
   amount: z.string(),
   userId: z.number(),
   createdAt: z.string(),
-  updatedAt: z.string()
+  updatedAt: z.string(),
+  expenses: z.array(ExpenseAPIResponseEschema)
 })
 
 
-export const BudgetsAPIResponseSchema = z.array(BudgetAPIResponseSchema);
+export const BudgetsAPIResponseSchema = z.array(BudgetAPIResponseSchema.omit({ expenses: true }));
 
 export type Budget = z.infer<typeof BudgetAPIResponseSchema>
+export type Expense = z.infer<typeof ExpenseAPIResponseEschema>
 
 export const PasswordValidationSchema = z.string().min(8, { message: 'La contraseña debe tener al menos 8 caracteres' })
 
