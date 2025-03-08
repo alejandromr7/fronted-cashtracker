@@ -88,3 +88,6 @@ export const DraftExpenseSchema = z.object({
   name: z.string().min(1, { message: 'El Nombre del gasto es obligatorio' }),
   amount: z.coerce.number().min(1, { message: 'Cantidad no válida' })
 })
+
+
+export type DraftExpense = z.infer<typeof DraftExpenseSchema>
